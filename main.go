@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"math/rand"
+)
 
 func main() {
 	fmt.Println("This is the first bit of code")
@@ -18,7 +22,6 @@ func main() {
 	}
 
 	// Logical Operators
-
 	if x < 42 && y < 42 {
 		fmt.Println("Both are less than the meaning of life")
 	}
@@ -30,4 +33,14 @@ func main() {
 	if x != 42 && y != 10 {
 		fmt.Println("x is not 42 & y is not 10")
 	}
+
+	// The comma ok idiom
+	if z := 2 * rand.Intn(x); z >= x {
+		fmt.Printf("z is %v and that is Greater than or equal to x which is %v\n", z, x)
+	} else {
+		fmt.Printf("z is %v and that is less than to x which is %v\n", z, x)
+	}
+
+	// Switch statements
+	
 }
