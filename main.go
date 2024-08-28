@@ -20,6 +20,7 @@ func main() {
 	} else {
 		fmt.Println("x is Greater than the meaning of life")
 	}
+	fmt.Println()
 
 	// Logical Operators
 	if x < 42 && y < 42 {
@@ -33,6 +34,7 @@ func main() {
 	if x != 42 && y != 10 {
 		fmt.Println("x is not 42 & y is not 10")
 	}
+	fmt.Println()
 
 	// The comma ok idiom
 	if z := 2 * rand.Intn(x); z >= x {
@@ -42,5 +44,40 @@ func main() {
 	}
 
 	// Switch statements
-	
+	// With default
+	switch x {
+	case 40:
+		fmt.Println("x is 40")
+	case 41:
+		fmt.Println("x is 41")
+	case 42:
+		fmt.Println("x is 42")
+	case 43:
+		fmt.Println("x is 43")
+	default:
+		fmt.Println("This is the default case for x")
+	}
+	switch {
+	case x < 42:
+		fmt.Println("x is less than 42")
+	case x == 42:
+		fmt.Println("x is 42")
+	case x > 42:
+		fmt.Println("x is greater than 42")
+	default:
+		fmt.Println("Another default case for 42")
+	}
+	// Without default
+	switch x {
+	case 40:
+		fmt.Println("x is 40")
+		fallthrough
+	case 41:
+		fmt.Println("x is 40")
+		fallthrough
+	case 42:
+		fmt.Println("x is 40")
+	default:
+		fmt.Println("Just in case")
+	}
 }
