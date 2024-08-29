@@ -4,6 +4,8 @@ import (
 	"fmt"
 
 	"math/rand"
+
+	"time"
 )
 
 func main() {
@@ -67,7 +69,7 @@ func main() {
 	default:
 		fmt.Println("Another default case for 42")
 	}
-	// Without default
+	// fallthrough makes the switch go to the next next even if the previous case was true and executed
 	switch x {
 	case 40:
 		fmt.Println("x is 40")
@@ -79,5 +81,28 @@ func main() {
 		fmt.Println("x is 40")
 	default:
 		fmt.Println("Just in case")
+	}
+	fmt.Println()
+
+	// Select statements
+	ch1 := make(chan int)
+	ch2 := make(chan int)
+	d1 := time.Duration(rand.Int63n(250))
+	d2 := time.Duration(rand.Int63n(250))
+	// This is a go routine
+	go func() {
+		time.Sleep(d1 * time.Millisecond)
+		ch1 <- 41
+	}()
+	go func() {
+		time.Sleep(d2 * time.Millisecond)
+		ch2 <- 42
+	}()
+	// This is a select statement
+	select {
+	case v1 := <-ch1:
+		fmt.Println("Value from channel 1", v1)
+	case v2 := <-ch2:
+		fmt.Println("Value from channel 2", v2)
 	}
 }
